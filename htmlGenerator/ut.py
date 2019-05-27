@@ -68,24 +68,7 @@ class TestStringMethods(unittest.TestCase):
         expected_h1_child = """<h1 class="bg-dark m-3 p-5">\nchild text\n</h1>"""
 
         self.assertEqual(h1_tag.html(), """<h1 class="bg-dark">\n{}\n</h1>""".format(expected_h1_child))
-
-
-
-    # def test_isupper(self):
-    #     self.assertTrue('FOO'.isupper())
-    #     self.assertFalse('Foo'.isupper())
-
-    # def test_split(self):
-    #     s = 'hello world'
-    #     self.assertEqual(s.split(), ['hello', 'world'])
-    #     # check that s.split fails when the separator is not a string
-    #     with self.assertRaises(TypeError):
-    #         s.split(2)
-
-
-def sut():
-    sut = unittest.TestSuite()
-    suite.addTests(TestStringMethods)
+        
 
 if __name__ == '__main__':
     unittest.main()
