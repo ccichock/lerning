@@ -2,22 +2,15 @@ from Class_Name import Class_List
 
 
 class HtmlTarget:
-    def __init__(self):
-        self.tag = ''
+
+
+    def __init__(self, tag):
+        self.tag = tag
         self.class_names = Class_List()
         self.string_html = ''
         self.text = ''
         self.parent = None
         self.children = []
-
-
-    def create_html(self, tag, class_name='', text=''):
-        self.tag = tag
-        self.text = text
-        if class_name:
-            self.class_names.add_class(class_name)
-        self.string_html = '<{} class="{}">\n{}\n</{}>'.format(tag, class_name, text, tag)
-        return self.string_html
 
 
     def html(self):

@@ -8,12 +8,13 @@ class Test_Class_List(unittest.TestCase):
         self.sut = Class_List()
 
 
-    def test_class_list(self):
+    def test_add_class(self):
+        self.sut.add_class("")
         self.sut.add_class("text")
         self.assertEqual(self.sut.to_string(), "text")
 
 
-    def test_class_list_add_many_class(self):
+    def test_add_many_class(self):
         self.sut.add_class("text")
         self.sut.add_class("p-4")
         self.sut.add_class("color-primary")
@@ -21,7 +22,15 @@ class Test_Class_List(unittest.TestCase):
         self.assertEqual(self.sut.to_string(), "text p-4 color-primary")
 
 
-    def test_class_list_modify_class(self):
+    def test_add_many_and_empty_class(self):
+        self.sut.add_class("text")
+        self.sut.add_class("p-4")
+        self.sut.add_class("color-primary")
+
+        self.assertEqual(self.sut.to_string(), "text p-4 color-primary")
+
+
+    def test_modify_class(self):
         self.sut.add_class("text p-4")
         self.assertEqual(self.sut.to_string(), "text p-4")
 
@@ -29,7 +38,7 @@ class Test_Class_List(unittest.TestCase):
         self.assertEqual(self.sut.to_string(), "text p-3")
 
 
-    def test_class_list_remove_class(self):
+    def test_remove_class(self):
         self.sut.add_class("color-primary p-4")
         self.assertEqual(self.sut.to_string(), "color-primary p-4")
 
@@ -40,7 +49,7 @@ class Test_Class_List(unittest.TestCase):
         self.assertEqual(self.sut.to_string(), "")
 
 
-    def test_class_list_remove_class_by_full_name(self):
+    def test_remove_class_by_full_name(self):
         self.sut.add_class("color-primary p-4")
         self.assertEqual(self.sut.to_string(), "color-primary p-4")
 
@@ -48,7 +57,7 @@ class Test_Class_List(unittest.TestCase):
         self.assertEqual(self.sut.to_string(), "color-primary")
 
 
-    def test_class_list_remove_many_classes(self):
+    def test_remove_many_classes(self):
         self.sut.add_class("color-primary p-4")
         self.assertEqual(self.sut.to_string(), "color-primary p-4")
 
