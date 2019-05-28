@@ -1,7 +1,7 @@
 from Class_Name import Class_List
 
 
-class HtmlTarget:
+class Html_Tag:
 
 
     def __init__(self, tag):
@@ -15,17 +15,17 @@ class HtmlTarget:
 
     def html(self):
 
-        tag_start = '<{} class="{}">'.format(self.tag, self.class_names.to_string())
-        tag_end = '\n</{}>'.format(self.tag)
+        tag_start = f'<{self.tag} class="{self.class_names.to_string()}">'
+        tag_end = f'\n</{self.tag}>'
 
         value = ''
         if self.children:
             for child in self.children:
-                value = value + '\n{}'.format(child.html())
+                value = value + f'\n{child.html()}'
         else:
-            value = '\n{}'.format(self.text)
+            value = f'\n{self.text}'
 
-        self.string_html = '{}{}{}'.format(tag_start, value, tag_end)
+        self.string_html = f'{tag_start}{value}{tag_end}'
         return self.string_html
 
 
