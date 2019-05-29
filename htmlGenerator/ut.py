@@ -1,4 +1,7 @@
 import unittest
+import sys
+
+sys.path.append('./src')
 
 from ut_test.test_class_name import Test_Class_Name
 from ut_test.test_class_list import Test_Class_List
