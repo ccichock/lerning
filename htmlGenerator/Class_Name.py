@@ -18,6 +18,10 @@ class Class_List:
         self.class_names = dict()
 
 
+    def is_empty(self):
+        return not self.class_names
+
+
     def to_string(self):
         names = " ".join(self.class_names.values())
         return names

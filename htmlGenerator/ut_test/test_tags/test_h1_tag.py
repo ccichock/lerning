@@ -10,7 +10,7 @@ class Test_h1(unittest.TestCase):
 
 
     def test_h1(self):
-        self.assertEqual(self.sut.html(), """<h1 class="">\ntext\n</h1>""")
+        self.assertEqual(self.sut.html(), """<h1>\ntext\n</h1>""")
 
 
     def test_h1_class(self):
@@ -32,8 +32,8 @@ class Test_h1(unittest.TestCase):
         child_h1_tag = h1("child text")
 
         self.sut.add_child(child_h1_tag)
-        expected_h1_child = """<h1 class="">\nchild text\n</h1>"""
-        self.assertEqual(self.sut.html(), f"""<h1 class="">\n{expected_h1_child}\n</h1>""")
+        expected_h1_child = """<h1>\nchild text\n</h1>"""
+        self.assertEqual(self.sut.html(), f"""<h1>\n{expected_h1_child}\n</h1>""")
 
 
     def test_h1_add_many_children(self):
@@ -43,10 +43,10 @@ class Test_h1(unittest.TestCase):
         self.sut.add_child(first_child_h1_tag)
         self.sut.add_child(child_h1_tag)
 
-        expected_first_h1_child = """<h1 class="">\nfirst text\n</h1>"""
-        expected_h1_child = """<h1 class="">\nchild text\n</h1>"""
+        expected_first_h1_child = """<h1>\nfirst text\n</h1>"""
+        expected_h1_child = """<h1>\nchild text\n</h1>"""
 
-        self.assertEqual(self.sut.html(), f"""<h1 class="">\n{expected_first_h1_child}\n{expected_h1_child}\n</h1>""")
+        self.assertEqual(self.sut.html(), f"""<h1>\n{expected_first_h1_child}\n{expected_h1_child}\n</h1>""")
 
 
     def test_h1_add_many_children_modify_class(self):
@@ -57,4 +57,4 @@ class Test_h1(unittest.TestCase):
 
         expected_h1_child = """<h1 class="m-3 p-5">\nchild text\n</h1>"""
 
-        self.assertEqual(self.sut.html(), f"""<h1 class="">\n{expected_h1_child}\n</h1>""")
+        self.assertEqual(self.sut.html(), f"""<h1>\n{expected_h1_child}\n</h1>""")

@@ -13,9 +13,25 @@ class Html_Tag:
         self.children = []
 
 
+    def find_child_by_tag(self, tag):
+        child = [child for child in self.children if child.tag == tag]
+        if child:
+            return child[0]
+        return None
+
+
+    def class_string(self):
+        class_string = ""
+
+        if not self.class_names.is_empty():
+            class_string = f' class="{self.class_names.to_string()}"'
+
+        return class_string
+
+
     def html(self):
 
-        tag_start = f'<{self.tag} class="{self.class_names.to_string()}">'
+        tag_start = f'<{self.tag}{self.class_string()}>'
         tag_end = f'\n</{self.tag}>'
 
         value = ''
@@ -35,5 +51,20 @@ class Html_Tag:
 
     def add_class(self, class_name):
         self.class_names.add_class(class_name)
+
+
+    def head(self):
+        head = self.find_child_by_tag('head')
+        return head
+
+
+    def body(self):
+        body = self.find_child_by_tag('body')
+        return body
+
+
+    def div(self):
+        div = self.find_child_by_tag('div')
+        return div
 
         
