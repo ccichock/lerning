@@ -58,6 +58,16 @@ class Html_Tag:
         return head
 
 
+    def h1(self):
+        h1 = self.find_child_by_tag('h1')
+        return h1
+
+
+    def h2(self):
+        h2 = self.find_child_by_tag('h2')
+        return h2
+
+
     def body(self):
         body = self.find_child_by_tag('body')
         return body
@@ -67,4 +77,17 @@ class Html_Tag:
         div = self.find_child_by_tag('div')
         return div
 
-        
+
+    def title(self):
+        title = self.find_child_by_tag('title')
+        return title
+
+
+    def script(self):
+        script = self.find_child_by_tag('script')
+        return script
+
+
+    def link(self):
+        link = self.find_child_by_tag('link')
+        return link

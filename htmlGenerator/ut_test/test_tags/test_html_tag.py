@@ -1,6 +1,6 @@
 import unittest
 from generator import html, head, title, body, div
-
+from templates.default_html import defalut_html
 
 class Test_html(unittest.TestCase):
 
@@ -45,7 +45,7 @@ class Test_html(unittest.TestCase):
         self.assertEqual(self.sut.html(), expect_html)
 
 
-    def test_default_html_With_class(self):
+    def test_default_html_with_class(self):
 
         self.sut.add_child(head())
         self.sut.head().add_child(title("title"))
@@ -62,3 +62,17 @@ class Test_html(unittest.TestCase):
 
         self.assertEqual(self.sut.html(), expect_html)
 
+
+    def test_default_html_class(self):
+
+        html = defalut_html("Page Title")
+
+        expect_title = """<title>\nPage Title\n</title>"""
+        expect_head = f"""<head>\n{expect_title}\n</head>"""
+        expect_body = """<body>\n\n</body>"""
+        expect_html = f"""<html>\n{expect_head}\n{expect_body}\n</html>"""
+
+        self.assertEqual(html.html(), expect_html)
+        self.assertEqual(html.head().html(), expect_head)
+        self.assertEqual(html.body().html(), expect_body)
+        self.assertEqual(html.head().title().html(), expect_title)
