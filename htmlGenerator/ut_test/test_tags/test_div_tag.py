@@ -40,3 +40,11 @@ class Test_div(unittest.TestCase):
         div_html = """<div>\n\n</div>"""
         h2_html = """<h2>\nH2 text\n</h2>"""
         self.assertEqual(self.sut.html(), f"""<div>\n{div_html}\n{h2_html}\n</div>""")
+
+
+    def test_div_with_button(self):
+        self.sut.button("Click")
+        self.sut.add_class("container")
+
+        button_html = """<button>\nClick\n</button>"""
+        self.assertEqual(self.sut.html(), f"""<div class="container">\n{button_html}\n</div>""")

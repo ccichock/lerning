@@ -28,8 +28,7 @@ class Class_List:
         for value in self.class_names.values():
             values.extend(value)
 
-        names = " ".join(values)
-        return names
+        return " ".join(values)
 
 
     def add_class(self, to_add_classes):

@@ -61,10 +61,14 @@ class Html_Tag:
             return self.add_child(title(kwargs["title_text"]))
         elif tag == "link":
             return self.add_child(link())
+        elif div == "div":
+            return self.add_child(div())
         elif tag == "h1":
             return self.add_child(h1(kwargs["text"]))
         elif tag == "h2":
             return self.add_child(h1(kwargs["text"]))
+        elif tag == "button":
+            return self.add_child(button(kwargs["on_click_text"]))
         elif tag == "script":
             return self.add_child(script())
         else:
@@ -111,6 +115,10 @@ class Html_Tag:
         return self.child("link")
 
 
+    def button(self, text):
+        return self.child("button", on_click_text=text)
+
+
 
 class html(Html_Tag):
 
@@ -154,6 +162,13 @@ class h2(Html_Tag):
 
     def __init__(self, text):
         super().__init__('h2')
+        self.text = text
+
+
+class button(Html_Tag):
+
+    def __init__(self, text):
+        super().__init__('button')
         self.text = text
 
 

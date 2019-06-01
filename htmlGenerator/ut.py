@@ -11,6 +11,7 @@ from ut_test.test_tags.test_div_tag import Test_div
 from ut_test.test_tags.test_html_tag import Test_html
 from ut_test.test_tags.test_script_tag import Test_script
 from ut_test.test_tags.test_link_tag import Test_link
+from ut_test.test_tags.test_button_tag import Test_button
 
 
 if __name__ == '__main__':
