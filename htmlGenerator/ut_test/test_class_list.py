@@ -30,14 +30,6 @@ class Test_Class_List(unittest.TestCase):
         self.assertEqual(self.sut.to_string(), "text p-4 color-primary")
 
 
-    def test_modify_class(self):
-        self.sut.add_class("text p-4")
-        self.assertEqual(self.sut.to_string(), "text p-4")
-
-        self.sut.add_class("p-3")
-        self.assertEqual(self.sut.to_string(), "text p-3")
-
-
     def test_remove_class(self):
         self.sut.add_class("color-primary p-4")
         self.assertEqual(self.sut.to_string(), "color-primary p-4")
@@ -63,3 +55,9 @@ class Test_Class_List(unittest.TestCase):
 
         self.sut.remove_class("color p")
         self.assertEqual(self.sut.to_string(), "")
+
+
+    def test_add_class_with_same_type(self):
+        self.sut.add_class("text-center p-4")
+        self.sut.add_class("text-primary")
+        self.assertEqual(self.sut.to_string(), "text-center text-primary p-4")

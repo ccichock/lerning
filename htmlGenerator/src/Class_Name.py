@@ -23,7 +23,12 @@ class Class_List:
 
 
     def to_string(self):
-        names = " ".join(self.class_names.values())
+        values = list()
+
+        for value in self.class_names.values():
+            values.extend(value)
+
+        names = " ".join(values)
         return names
 
 
@@ -33,7 +38,11 @@ class Class_List:
 
             for to_add_name in to_add_names:
                 to_add = Class_Name(to_add_name)
-                self.class_names.update({to_add.type() : to_add.to_string()})
+                if not to_add.type() in self.class_names:
+                    self.class_names.update({to_add.type() : [to_add.to_string()]})
+                else:
+                    type_value_list = self.class_names[to_add.type()]
+                    type_value_list.append(to_add.to_string())
 
 
     def remove_class(self, to_remove_classes):

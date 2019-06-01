@@ -18,6 +18,6 @@ class simple_html(Html_Tag):
         self.head().link().bootstrap_link()
         self.head().title(page_title)
         self.head().h1("Hello World")
-        self.head().h1().add_class("text-light m-2 p-3 bg-dark")
+        self.head().h1().add_class("text-light m-2 p-3 bg-dark text-center")
         self.body().script().bootstrap_script()
         self.body().add_class("bg-secondary")
