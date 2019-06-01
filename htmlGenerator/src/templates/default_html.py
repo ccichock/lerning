@@ -1,6 +1,6 @@
 
-from generator import *
-from HtmlTag import Html_Tag
+# from generator import *
+from HtmlTag import Html_Tag, title, h1, body, script, head
 
 class defalut_html(Html_Tag):
 
@@ -17,12 +17,9 @@ class simple_html(Html_Tag):
     def __init__(self, page_title):
         super().__init__('html')
 
-        self.add_child(head())
-        self.head().add_child(link())
-        self.head().link().bootstrap()
-        self.head().add_child(title(page_title))
-        self.head().add_child(h1("Hello World"))
-        self.head().h1().add_class("text-center m-2 p-3 bg-secondary")
-        self.add_child(body())
-        self.body().add_child(script())
-        self.body().script().bootstrap()
+        self.head().link().bootstrap_link()
+        self.head().title(page_title)
+        self.head().h1("Hello World")
+        self.head().h1().add_class("text-light m-2 p-3 bg-dark")
+        self.body().script().bootstrap_script()
+        self.body().add_class("bg-secondary")

@@ -1,5 +1,5 @@
 import unittest
-from generator import link
+from HtmlTag import link
 
 
 class Test_link(unittest.TestCase):
@@ -10,7 +10,7 @@ class Test_link(unittest.TestCase):
 
 
     def test_bootstrap_link(self):
-        self.sut.bootstrap()
+        self.sut.bootstrap_link()
 
         expect_rel="stylesheet" 
         expect_href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 

@@ -1,5 +1,5 @@
 import unittest
-from generator import script
+from HtmlTag import script
 
 
 class Test_script(unittest.TestCase):
@@ -14,7 +14,7 @@ class Test_script(unittest.TestCase):
 
 
     def test_bootstrap_script(self):
-        self.sut.bootstrap()
+        self.sut.bootstrap_script()
 
         expect_src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         expect_integrity = "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"

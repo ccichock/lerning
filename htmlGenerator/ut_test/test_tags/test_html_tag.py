@@ -1,5 +1,5 @@
 import unittest
-from generator import html, head, title, body, div
+from HtmlTag import html, head, title, body, div
 from templates.default_html import defalut_html
 
 class Test_html(unittest.TestCase):
@@ -76,3 +76,25 @@ class Test_html(unittest.TestCase):
         self.assertEqual(html.head().html(), expect_head)
         self.assertEqual(html.body().html(), expect_body)
         self.assertEqual(html.head().title().html(), expect_title)
+
+
+    def test_html_create_head_in_not_added(self):
+
+        self.sut.head()
+        expect_head = f"""<head>\n\n</head>"""
+        expect_html = f"""<html>\n{expect_head}\n</html>"""
+        self.assertEqual(self.sut.html(), expect_html)
+
+
+    def test_html_create_children_in_not_added(self):
+
+        self.sut.head().title("Title")
+        self.sut.body().div()
+
+        expect_title = f"""<title>\nTitle\n</title>"""
+        expect_head = f"""<head>\n{expect_title}\n</head>"""
+        expect_div = f"""<div>\n\n</div>"""
+        expect_body = f"""<body>\n{expect_div}\n</body>"""
+
+        expect_html = f"""<html>\n{expect_head}\n{expect_body}\n</html>"""
+        self.assertEqual(self.sut.html(), expect_html)

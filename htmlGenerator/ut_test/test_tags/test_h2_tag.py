@@ -1,5 +1,5 @@
 import unittest
-from generator import h2
+from HtmlTag import h2
 
 
 class Test_h2(unittest.TestCase):
