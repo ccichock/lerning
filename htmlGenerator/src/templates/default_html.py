@@ -1,5 +1,3 @@
-
-# from generator import *
 from HtmlTag import Html_Tag, title, h1, body, script, head
 
 class defalut_html(Html_Tag):

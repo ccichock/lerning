@@ -54,26 +54,27 @@ class Html_Tag:
         self.class_names.add_class(class_name)
 
 
-    def child(self, tag, *args):
+    def create_new_tag(self, tag, **kwargs):
+        if tag == "head":
+            return self.add_child(head())
+        elif tag == "title":
+            return self.add_child(title(kwargs["title_text"]))
+        elif tag == "link":
+            return self.add_child(link())
+        elif tag == "h1":
+            return self.add_child(h1(kwargs["text"]))
+        elif tag == "h2":
+            return self.add_child(h1(kwargs["text"]))
+        elif tag == "script":
+            return self.add_child(script())
+        else:
+            return self.add_child(Html_Tag(tag))
+
+
+    def child(self, tag, **kwargs):
         html_tag = self.find_child_by_tag(tag)
         if not html_tag:
-            # if args:
-            #     html_tag = self.add_child(Html_Tag(tag, args[0]))
-            # else:
-            if tag == "head":
-                html_tag = self.add_child(head())
-            elif tag == "title":
-                if args:
-                    html_tag = self.add_child(title(args[0]))
-            elif tag == "link":
-                html_tag = self.add_child(link())
-            elif tag == "h1":
-                if args:
-                    html_tag = self.add_child(h1(args[0]))
-            elif tag == "script":
-                html_tag = self.add_child(script())
-            else:
-                html_tag = self.add_child(Html_Tag(tag))
+            html_tag = self.create_new_tag(tag, **kwargs)
 
         return html_tag
 
@@ -83,12 +84,11 @@ class Html_Tag:
 
 
     def h1(self, text=""):
-        return self.child("h1", text)
+        return self.child("h1", text=text)
 
 
     def h2(self, text=""):
-        h2 = self.find_child_by_tag('h2', text)
-        return h2
+        return self.child("h2", text=text)
 
 
     def body(self):
@@ -100,7 +100,7 @@ class Html_Tag:
 
 
     def title(self, page_title=""):
-        return self.child("title", page_title)
+        return self.child("title", title_text=page_title)
 
 
     def script(self):
