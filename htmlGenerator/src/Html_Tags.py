@@ -46,6 +46,13 @@ class h2(Html_Tag):
         self.text = text
 
 
+class p(Html_Tag):
+
+    def __init__(self, text):
+        super().__init__('p')
+        self.text = text
+
+
 class button(Html_Tag):
 
     def __init__(self, text):

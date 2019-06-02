@@ -51,6 +51,10 @@ class Html_Tag:
         return self.children.child("h2", text=text)
 
 
+    def p(self, text=""):
+        return self.children.child("p", text=text)
+
+
     def body(self):
         return self.children.child("body")
 

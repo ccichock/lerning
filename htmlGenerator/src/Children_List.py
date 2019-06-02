@@ -27,7 +27,7 @@ class Children_List:
 
 
     def create_new_tag(self, tag, **kwargs):
-        from Html_Tags import head, title, link, a, div, h1, button, script, body #to do remove import
+        from Html_Tags import head, title, link, a, div, h1, button, script, body, p #to do remove import circle dependency
         if tag == "head":
             return self.add_child(head())
         elif tag == "title":
@@ -44,6 +44,8 @@ class Children_List:
             return self.add_child(h1(kwargs["text"]))
         elif tag == "h2":
             return self.add_child(h2(kwargs["text"]))
+        elif tag == "p":
+            return self.add_child(p(kwargs["text"]))
         elif tag == "button":
             return self.add_child(button(kwargs["on_click_text"]))
         elif tag == "script":
