@@ -1,5 +1,5 @@
 import unittest
-from HtmlTag import button
+from Html_Tags import button
 
 
 class Test_button(unittest.TestCase):

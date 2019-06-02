@@ -1,5 +1,5 @@
 import unittest
-from HtmlTag import h1
+from Html_Tags import h1
 
 
 class Test_h1(unittest.TestCase):
@@ -47,14 +47,3 @@ class Test_h1(unittest.TestCase):
         expected_h1_child = """<h1>\nchild text\n</h1>"""
 
         self.assertEqual(self.sut.html(), f"""<h1>\n{expected_first_h1_child}\n{expected_h1_child}\n</h1>""")
-
-
-    def test_h1_add_many_children_modify_class(self):
-        child_h1_tag = h1("child text")
-
-        self.sut.add_child(child_h1_tag)
-        self.sut.children[0].add_class("m-3 p-5")
-
-        expected_h1_child = """<h1 class="m-3 p-5">\nchild text\n</h1>"""
-
-        self.assertEqual(self.sut.html(), f"""<h1>\n{expected_h1_child}\n</h1>""")

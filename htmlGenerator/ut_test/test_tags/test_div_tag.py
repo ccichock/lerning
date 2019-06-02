@@ -1,5 +1,5 @@
 import unittest
-from HtmlTag import div, h1, h2
+from Html_Tags import div, h1, h2
 
 
 class Test_div(unittest.TestCase):

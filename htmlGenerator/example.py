@@ -13,7 +13,7 @@ class Simple_Html(Default_Html):
         self.head().h1("Hello World").add_class("text-light mb-2 p-3 bg-dark text-center")
         self.body().add_class("bg-secondary")
         self.body().div().button("Submit").add_class("btn btn-dark")
-        self.body().div().add_class("container bg-light")
+        self.body().div().add_class("container p-1 bg-light")
         self.body().div().a("youtube" ,'https://www.youtube.com').add_class("btn btn-danger")
 
 

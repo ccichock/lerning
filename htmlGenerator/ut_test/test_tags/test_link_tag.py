@@ -1,5 +1,5 @@
 import unittest
-from HtmlTag import link
+from Html_Tags import link
 
 
 class Test_link(unittest.TestCase):

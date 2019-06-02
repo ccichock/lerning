@@ -1,5 +1,5 @@
 import unittest
-from HtmlTag import script
+from Html_Tags import script
 
 
 class Test_script(unittest.TestCase):
