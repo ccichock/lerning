@@ -14,6 +14,7 @@ from ut_test.test_tags.test_link_tag import Test_link
 from ut_test.test_tags.test_button_tag import Test_button
 from ut_test.test_tags.test_a_tag import Test_a
 from ut_test.test_tags.test_p_tag import Test_p
+from ut_test.test_tags.test_form_tag import Test_form
 
 if __name__ == '__main__':
     unittest.main()

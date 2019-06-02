@@ -79,5 +79,9 @@ class Html_Tag:
         return self.children.child("a", text=text, url=url)
 
 
+    def form(self):
+        return self.children.child("form")
+
+
     def button(self, text):
         return self.children.child("button", on_click_text=text)

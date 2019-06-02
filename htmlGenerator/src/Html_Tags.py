@@ -68,6 +68,12 @@ class a(Html_Tag):
         self.tag_params_list.add_href(url)
 
 
+class form(Html_Tag):
+
+    def __init__(self):
+        super().__init__('form')
+
+
 class script(Html_Tag):
 
     def __init__(self):
