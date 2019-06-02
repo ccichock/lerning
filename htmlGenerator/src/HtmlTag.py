@@ -1,13 +1,13 @@
 from Class_Name import Class_List
-
+from Tag_Params_List import Tag_Params_List
 
 class Html_Tag:
 
 
     def __init__(self, tag):
         self.tag = tag
-        self.class_names = Class_List()
         self.string_html = ''
+        self.tag_params_list = Tag_Params_List()
         self.text = ''
         self.parent = None
         self.children = []
@@ -20,18 +20,11 @@ class Html_Tag:
         return None
 
 
-    def class_string(self):
-        class_string = ""
-
-        if not self.class_names.is_empty():
-            class_string = f' class="{self.class_names.to_string()}"'
-
-        return class_string
-
-
     def html(self):
 
-        tag_start = f'<{self.tag}{self.class_string()}>'
+        tag_params = self.tag_params_list.params_string()
+
+        tag_start = f'<{self.tag}{tag_params}>'
         tag_end = f'\n</{self.tag}>'
 
         value = ''
@@ -51,7 +44,7 @@ class Html_Tag:
 
 
     def add_class(self, class_name):
-        self.class_names.add_class(class_name)
+        self.tag_params_list.add_class(class_name)
 
 
     def create_new_tag(self, tag, **kwargs):
@@ -61,6 +54,8 @@ class Html_Tag:
             return self.add_child(title(kwargs["title_text"]))
         elif tag == "link":
             return self.add_child(link())
+        elif tag == "a":
+            return self.add_child(a(kwargs["text"], kwargs["url"]))
         elif div == "div":
             return self.add_child(div())
         elif tag == "h1":
@@ -113,6 +108,10 @@ class Html_Tag:
 
     def link(self):
         return self.child("link")
+
+
+    def a(self, text, url):
+        return self.child("a", text=text, url=url)
 
 
     def button(self, text):
@@ -170,6 +169,14 @@ class button(Html_Tag):
     def __init__(self, text):
         super().__init__('button')
         self.text = text
+
+
+class a(Html_Tag):
+
+    def __init__(self, text='', url='#'):
+        super().__init__('a')
+        self.text = text
+        self.tag_params_list.add_href(url)
 
 
 class script(Html_Tag):
