@@ -1,6 +1,6 @@
 import unittest
 from HtmlTag import html, head, title, body, div
-from templates.default_html import defalut_html
+from templates.Default_Html import Default_Html
 
 class Test_html(unittest.TestCase):
 
@@ -64,21 +64,33 @@ class Test_html(unittest.TestCase):
 
 
     def test_default_html_class(self):
+        html = Default_Html("Page Title")
 
-        html = defalut_html("Page Title")
+        expect_title = '<title>\nPage Title\n</title>'
 
-        expect_title = """<title>\nPage Title\n</title>"""
-        expect_head = f"""<head>\n{expect_title}\n</head>"""
-        expect_body = """<body>\n\n</body>"""
-        expect_html = f"""<html>\n{expect_head}\n{expect_body}\n</html>"""
+        expect_rel="stylesheet" 
+        expect_href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        expect_integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+        expect_crossorigin="anonymous"
+        expect_link = f'<link rel="{expect_rel}" href="{expect_href}" integrity="{expect_integrity}" crossorigin="{expect_crossorigin}">'
+
+        expect_head = f'<head>\n{expect_link}\n{expect_title}\n</head>'
+
+        expect_src = 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'
+        expect_integrity = 'sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM'
+        expect_crossorigin = 'anonymous'
+        expect_script = f'<script src="{expect_src}" integrity="{expect_integrity}" crossorigin="{expect_crossorigin}"></script>'
+
+        expect_body = f'<body>\n{expect_script}\n</body>'
+        expect_html = f'<html>\n{expect_head}\n{expect_body}\n</html>'
 
         self.assertEqual(html.html(), expect_html)
         self.assertEqual(html.head().html(), expect_head)
         self.assertEqual(html.body().html(), expect_body)
-        self.assertEqual(html.head().title().html(), expect_title)
+        self.assertEqual(html.html(), expect_html)
 
 
-    def test_html_create_head_in_not_added(self):
+    def test_html_create_head_in_not_added_child(self):
 
         self.sut.head()
         expect_head = f"""<head>\n\n</head>"""
@@ -86,7 +98,7 @@ class Test_html(unittest.TestCase):
         self.assertEqual(self.sut.html(), expect_html)
 
 
-    def test_html_create_children_in_not_added(self):
+    def test_html_create_children_in_not_added_child(self):
 
         self.sut.head().title("Title")
         self.sut.body().div()
