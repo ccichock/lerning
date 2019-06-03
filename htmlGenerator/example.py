@@ -15,8 +15,10 @@ class Simple_Html(Default_Html):
         self.body().div().add_class('container p-1 bg-light')
         self.body().div().a('youtube' ,'https://www.youtube.com').add_class('btn btn-danger')
         self.body().div().div().p('The following is a basic list of the most common CSS properties with the ...').add_class('p-2 text-justify')
-        self.body().div().form().div().button('Submit').add_class('btn btn-dark')
         self.body().div().form().div().add_class("form-group")
+        self.body().div().form().div().textarea().add_class("form-control my-2")
+        self.body().div().form().div().textarea().placeholder("Type your message")
+        self.body().div().form().div().button('Submit').add_class('btn btn-dark')
 
 
 def main():

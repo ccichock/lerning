@@ -39,6 +39,10 @@ class Html_Tag:
         self.tag_params_list.add_class(class_name)
 
 
+    def placeholder(self, text):
+        self.tag_params_list.add_placeholder(text)
+
+
     def head(self):
         return self.children.child("head")
 
@@ -81,6 +85,10 @@ class Html_Tag:
 
     def form(self):
         return self.children.child("form")
+
+
+    def textarea(self):
+        return self.children.child("textarea")
 
 
     def button(self, text):

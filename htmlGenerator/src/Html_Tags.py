@@ -74,6 +74,12 @@ class form(Html_Tag):
         super().__init__('form')
 
 
+class textarea(Html_Tag):
+
+    def __init__(self):
+        super().__init__('textarea')
+
+
 class script(Html_Tag):
 
     def __init__(self):

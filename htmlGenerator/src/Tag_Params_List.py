@@ -21,6 +21,11 @@ class Tag_Params_List:
         self.tag_params_list.update({'href': href_string})
 
 
+    def add_placeholder(self, text):
+        href_string = f' placeholder="{text}"'
+        self.tag_params_list.update({'placeholder': href_string})
+
+
     def params_string(self):
 
         if self.tag_params_list:
