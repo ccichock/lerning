@@ -10,4 +10,3 @@ class Default_Html(Html_Tag):
         self.head().link().bootstrap_link()
         self.head().title(page_title)
         self.body().script().bootstrap_script()
-        

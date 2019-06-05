@@ -10,4 +10,4 @@ class Test_h2(unittest.TestCase):
 
 
     def test_h2(self):
-        self.assertEqual(self.sut.html(), """<h2>\ndummy text\n</h2>""")
+        self.assertEqual(self.sut.html(), """<h2>dummy text</h2>""")

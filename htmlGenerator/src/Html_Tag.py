@@ -11,23 +11,24 @@ class Html_Tag:
         self.text = ''
         self.children = Children_List()
 
+    def text_value(self):
+
+        if not self.children.is_empty() and not self.text:
+            for child in self.children:
+                self.text = self.text + f'\n{child.html()}'
+            self.text += '\n'
+
+        return self.text
+
 
     def html(self):
 
         tag_params = self.tag_params_list.params_string()
 
         tag_start = f'<{self.tag}{tag_params}>'
-        tag_end = f'\n</{self.tag}>'
+        tag_end = f'</{self.tag}>'
 
-        value = ''
-        if not self.children.is_empty():
-            for child in self.children:
-                value = value + f'\n{child.html()}'
-        else:
-            value = f'\n{self.text}'
-
-        self.string_html = f'{tag_start}{value}{tag_end}'
-        return self.string_html
+        return f'{tag_start}{self.text_value()}{tag_end}'
 
 
     def add_child(self, htmlTarget):
@@ -41,6 +42,10 @@ class Html_Tag:
 
     def placeholder(self, text):
         self.tag_params_list.add_placeholder(text)
+
+
+    def add_href(self, url):
+        self.tag_params_list.add_href(url)
 
 
     def head(self):

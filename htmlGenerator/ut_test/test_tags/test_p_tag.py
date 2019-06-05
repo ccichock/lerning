@@ -10,4 +10,4 @@ class Test_p(unittest.TestCase):
 
 
     def test_p(self):
-        self.assertEqual(self.sut.html(), """<p>\ndummy paragaph text\n</p>""")
+        self.assertEqual(self.sut.html(), """<p>dummy paragaph text</p>""")

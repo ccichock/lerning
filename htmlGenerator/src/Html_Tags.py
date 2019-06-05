@@ -64,8 +64,8 @@ class a(Html_Tag):
 
     def __init__(self, text='', url='#'):
         super().__init__('a')
+        super().add_href(url)
         self.text = text
-        self.tag_params_list.add_href(url)
 
 
 class form(Html_Tag):

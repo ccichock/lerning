@@ -10,15 +10,15 @@ class Test_a(unittest.TestCase):
 
 
     def test_a(self):
-        self.assertEqual(self.sut.html(), '<a href="#">\n\n</a>')
+        self.assertEqual(self.sut.html(), '<a href="#"></a>')
 
 
     def test_a_href(self):
         a_html = a(text='', url='https://www.youtube.com/')
-        self.assertEqual(a_html.html(), '<a href="https://www.youtube.com/">\n\n</a>')
+        self.assertEqual(a_html.html(), '<a href="https://www.youtube.com/"></a>')
 
 
     def test_a_href_and_class(self):
         a_html = a(text='Link', url='https://www.youtube.com/')
         a_html.add_class("btn btn-light")
-        self.assertEqual(a_html.html(), '<a href="https://www.youtube.com/" class="btn btn-light">\nLink\n</a>')
+        self.assertEqual(a_html.html(), '<a href="https://www.youtube.com/" class="btn btn-light">Link</a>')
