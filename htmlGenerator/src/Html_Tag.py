@@ -6,7 +6,6 @@ class Html_Tag:
 
     def __init__(self, tag):
         self.tag = tag
-        self.string_html = ''
         self.tag_params_list = Tag_Params_List()
         self.text = ''
         self.children = Children_List()
@@ -46,6 +45,22 @@ class Html_Tag:
 
     def add_href(self, url):
         self.tag_params_list.add_href(url)
+
+
+    def add_src(self, src):
+        self.tag_params_list.add_src(src)
+
+
+    def add_rel(self, rel):
+        self.tag_params_list.add_rel(rel)
+
+
+    def add_integrity(self, integrity):
+        self.tag_params_list.add_integrity(integrity)
+
+
+    def add_crossorigin(self, crossorigin):
+        self.tag_params_list.add_crossorigin(crossorigin)
 
 
     def head(self):

@@ -9,28 +9,44 @@ class Tag_Params_List:
         self.href = ''
 
 
+    def add_to_params_list(self, param, value):
+        param_string = f' {param}="{value}"'
+        self.tag_params_list.update({param: param_string})
+
+
     def add_class(self, class_name):
         self.class_names.add_class(class_name)
-
-        class_string = f' class="{self.class_names.to_string()}"'
-        self.tag_params_list.update({'class': class_string})
+        self.add_to_params_list("class", self.class_names.to_string())
 
 
     def add_href(self, url):
-        href_string = f' href="{url}"'
-        self.tag_params_list.update({'href': href_string})
+        self.add_to_params_list("href", url)
 
 
     def add_placeholder(self, text):
-        href_string = f' placeholder="{text}"'
-        self.tag_params_list.update({'placeholder': href_string})
+        self.add_to_params_list("placeholder", text)
+
+
+    def add_rel(self, text):
+        self.add_to_params_list("rel", text)
+
+
+    def add_integrity(self, text):
+        self.add_to_params_list("integrity", text)
+
+
+    def add_crossorigin(self, text):
+        self.add_to_params_list("crossorigin", text)
+
+
+    def add_src(self, src):
+        self.add_to_params_list("src", src)
 
 
     def params_string(self):
+        tag_params = ''
 
         if self.tag_params_list:
             tag_params = ''.join(self.tag_params_list.values())
-        else:
-            tag_params = ''
 
         return tag_params

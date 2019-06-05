@@ -84,41 +84,28 @@ class script(Html_Tag):
 
     def __init__(self):
         super().__init__('script')
-        self.src = ""
-        self.integrity = ""
-        self.crossorigin = ""
 
 
     def bootstrap_script(self):
-        self.src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        self.integrity = "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        self.crossorigin = crossorigin="anonymous"
-
-
-    def html(self):
-
-        if self.src and self.integrity and self.crossorigin:
-            return f'<script src="{self.src}" integrity="{self.integrity}" crossorigin="{self.crossorigin}"></script>'
-        else:
-            return f'<script></script>'
+        super().add_src("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js")
+        super().add_integrity("sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM")
+        super().add_crossorigin("anonymous")
 
 
 class link(Html_Tag):
 
     def __init__(self):
         super().__init__('link')
-        self.rel = ""
-        self.href = ""
-        self.integrity = ""
-        self.crossorigin = ""
 
 
     def bootstrap_link(self):
-        self.rel = "stylesheet"
-        self.href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        self.integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        self.crossorigin = "anonymous"
+        super().add_rel("stylesheet")
+        super().add_href("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
+        super().add_integrity("sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T")
+        super().add_crossorigin("anonymous")
 
 
     def html(self):
-        return f'<link rel="{self.rel}" href="{self.href}" integrity="{self.integrity}" crossorigin="{self.crossorigin}">'
+        tag_params = self.tag_params_list.params_string()
+        tag_start = f'<{self.tag}{tag_params}>'
+        return f'{tag_start}{self.text_value()}'
