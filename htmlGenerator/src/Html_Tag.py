@@ -4,8 +4,9 @@ from Children_List import Children_List
 class Html_Tag:
 
 
-    def __init__(self, tag):
+    def __init__(self, tag, id=None):
         self.tag = tag
+        self.id = id
         self.tag_params_list = Tag_Params_List()
         self.text = ''
         self.children = Children_List()
@@ -63,53 +64,53 @@ class Html_Tag:
         self.tag_params_list.add_crossorigin(crossorigin)
 
 
-    def head(self):
-        return self.children.child("head")
+    def head(self, id=None):
+        return self.children.child("head", id=id)
 
 
-    def h1(self, text=""):
-        return self.children.child("h1", text=text)
+    def h1(self, text="", id=None):
+        return self.children.child("h1", text=text, id=id)
 
 
-    def h2(self, text=""):
-        return self.children.child("h2", text=text)
+    def h2(self, text="", id=None):
+        return self.children.child("h2", text=text, id=id)
 
 
-    def p(self, text=""):
-        return self.children.child("p", text=text)
+    def p(self, text="", id=None):
+        return self.children.child("p", id=id, text=text)
 
 
-    def body(self):
-        return self.children.child("body")
+    def body(self, id=None):
+        return self.children.child("body", id=id)
 
 
-    def div(self):
-        return self.children.child("div")
+    def div(self, id=None):
+        return self.children.child("div", id=id)
 
 
-    def title(self, page_title=""):
-        return self.children.child("title", title_text=page_title)
+    def title(self, page_title="", id=None):
+        return self.children.child("title", title_text=page_title, id=id)
 
 
-    def script(self):
-        return self.children.child("script")
+    def script(self, id=None):
+        return self.children.child("script", id=id)
 
 
-    def link(self):
-        return self.children.child("link")
+    def link(self, id=None):
+        return self.children.child("link", id=id)
 
 
-    def a(self, text, url):
-        return self.children.child("a", text=text, url=url)
+    def a(self, text='', url='#', id=None):
+        return self.children.child("a", id=id, text=text, url=url)
 
 
-    def form(self):
-        return self.children.child("form")
+    def form(self, id=None):
+        return self.children.child("form", id=id)
 
 
-    def textarea(self):
-        return self.children.child("textarea")
+    def textarea(self, id=None):
+        return self.children.child("textarea", id=id)
 
 
-    def button(self, text):
-        return self.children.child("button", on_click_text=text)
+    def button(self, text, id=None):
+        return self.children.child("button", id=id, on_click_text=text)

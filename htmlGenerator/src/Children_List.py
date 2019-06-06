@@ -19,8 +19,12 @@ class Children_List:
         return htmlTarget
 
 
-    def find_child_by_tag(self, tag):
-        child = [child for child in self.children if child.tag == tag]
+    def child_match(self, child, tag, **kwargs):
+        return child.tag == tag and child.id == kwargs["id"]
+
+
+    def find_child(self, tag, **kwargs):
+        child = [child for child in self.children if self.child_match(child, tag, **kwargs)]
         if child:
             return child[0]
         return None
@@ -29,37 +33,37 @@ class Children_List:
     def create_new_tag(self, tag, **kwargs):
         from Html_Tags import head, title, link, a, div, h1, button, script, body, p, form, textarea #to do remove import circle dependency
         if tag == "head":
-            return self.add_child(head())
+            return self.add_child(head(kwargs["id"]))
         elif tag == "title":
-            return self.add_child(title(kwargs["title_text"]))
+            return self.add_child(title(kwargs["title_text"], kwargs["id"]))
         elif tag == "body":
-            return self.add_child(body())
+            return self.add_child(body(kwargs["id"]))
         elif tag == "link":
-            return self.add_child(link())
+            return self.add_child(link(kwargs["id"]))
         elif tag == "a":
-            return self.add_child(a(kwargs["text"], kwargs["url"]))
+            return self.add_child(a(kwargs["text"], kwargs["url"], kwargs["id"]))
         elif tag == "div":
-            return self.add_child(div())
+            return self.add_child(div(kwargs["id"]))
         elif tag == "h1":
-            return self.add_child(h1(kwargs["text"]))
+            return self.add_child(h1(kwargs["text"], kwargs["id"]))
         elif tag == "h2":
-            return self.add_child(h2(kwargs["text"]))
+            return self.add_child(h2(kwargs["text"], kwargs["id"]))
         elif tag == "p":
-            return self.add_child(p(kwargs["text"]))
+            return self.add_child(p(kwargs["text"], kwargs["id"]))
         elif tag == "form":
-            return self.add_child(form())
+            return self.add_child(form(kwargs["id"]))
         elif tag == "textarea":
-            return self.add_child(textarea())
+            return self.add_child(textarea(kwargs["id"]))
         elif tag == "button":
-            return self.add_child(button(kwargs["on_click_text"]))
+            return self.add_child(button(kwargs["on_click_text"], kwargs["id"]))
         elif tag == "script":
-            return self.add_child(script())
+            return self.add_child(script(kwargs["id"]))
         else:
             return None
 
 
     def child(self, tag, **kwargs):
-        html_tag = self.find_child_by_tag(tag)
+        html_tag = self.find_child(tag, **kwargs)
         if not html_tag:
             html_tag = self.create_new_tag(tag, **kwargs)
 
