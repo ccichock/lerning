@@ -3,6 +3,7 @@ import sys
 sys.path.append('./src')
 
 from templates.Default_Html import Default_Html
+from templates.Registration_Form import Registration_Form
 
 
 class Simple_Html(Default_Html):
@@ -16,10 +17,8 @@ class Simple_Html(Default_Html):
         self.body().div().a('youtube' ,'https://www.youtube.com', id="yt").add_class('btn btn-danger')
         self.body().div().a('facebook' ,'https://www.facebook.com', id="fb").add_class('btn btn-primary')
         self.body().div().div().p('The following is a basic list of the most common CSS properties with the ...').add_class('p-2 text-justify')
-        self.body().div().form().div().add_class("form-group")
-        self.body().div().form().div().textarea().add_class("form-control my-2")
-        self.body().div().form().div().textarea().placeholder("Type your message")
-        self.body().div().form().div().button('Submit').add_class('btn btn-dark')
+        self.body().div().h2("Register Form").add_class("text-center")
+        self.body().div().add_child(Registration_Form())
 
 
 def main():

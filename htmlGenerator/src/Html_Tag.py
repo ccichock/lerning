@@ -108,6 +108,14 @@ class Html_Tag:
         return self.children.child("form", id=id)
 
 
+    def label(self, text='', id=None):
+        return self.children.child("label", text=text, id=id)
+
+
+    def input(self, id=None):
+        return self.children.child("input", id=id)
+
+
     def textarea(self, id=None):
         return self.children.child("textarea", id=id)
 

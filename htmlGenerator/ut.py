@@ -16,5 +16,7 @@ from ut_test.test_tags.test_a_tag import Test_a
 from ut_test.test_tags.test_p_tag import Test_p
 from ut_test.test_tags.test_form_tag import Test_form
 
+from ut_test.test_templates.test_registration_form import Test_Registration_Form
+
 if __name__ == '__main__':
     unittest.main()

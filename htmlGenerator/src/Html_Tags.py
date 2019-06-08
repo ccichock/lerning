@@ -74,6 +74,25 @@ class form(Html_Tag):
         super().__init__('form', id)
 
 
+class label(Html_Tag):
+
+    def __init__(self, text='', id=None):
+        super().__init__('label', id)
+        self.text = text
+
+
+class input_text(Html_Tag):
+
+    def __init__(self, id=None):
+        super().__init__('input', id)
+
+
+    def html(self):
+        tag_params = self.tag_params_list.params_string()
+        tag_start = f'<{self.tag}{tag_params}>'
+        return f'{tag_start}{self.text_value()}'
+
+
 class textarea(Html_Tag):
 
     def __init__(self, id=None):
