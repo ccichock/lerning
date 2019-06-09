@@ -1,8 +1,8 @@
 import unittest
-from tools.remove_tabs import remove_indentination
+from tools.remove_indents import remove_indentination
 
 
-class Test_remove_tabs(unittest.TestCase):
+class Test_remove_indentination(unittest.TestCase):
 
 
     def test_remove_tabs(self):

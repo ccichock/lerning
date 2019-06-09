@@ -1,7 +1,7 @@
 import unittest
 from Html_Tags import html, head, title, body, div
 from templates.Default_Html import Default_Html
-from tools.remove_tabs import remove_indentination
+from tools.remove_indents import remove_indentination
 
 
 class Test_html(unittest.TestCase):

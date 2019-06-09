@@ -1,6 +1,6 @@
 import unittest
 from Html_Tags import button, div
-from tools.remove_tabs import remove_indentination
+from tools.remove_indents import remove_indentination
 
 class Test_button(unittest.TestCase):
 

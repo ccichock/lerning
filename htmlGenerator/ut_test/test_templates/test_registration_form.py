@@ -1,6 +1,6 @@
 import unittest
 from templates.Registration_Form import Registration_Form
-from tools.remove_tabs import remove_indentination
+from tools.remove_indents import remove_indentination
 
 
 class Test_Registration_Form(unittest.TestCase):

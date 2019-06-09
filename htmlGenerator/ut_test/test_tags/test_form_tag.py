@@ -1,6 +1,6 @@
 import unittest
 from Html_Tags import form, textarea, label, input_text, div
-from tools.remove_tabs import remove_indentination
+from tools.remove_indents import remove_indentination
 
 
 class Test_form(unittest.TestCase):

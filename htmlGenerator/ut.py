@@ -18,7 +18,8 @@ from ut_test.test_tags.test_form_tag import Test_form
 
 from ut_test.test_templates.test_registration_form import Test_Registration_Form
 
-from ut_test.test_tools.test_remove_tabs import Test_remove_tabs
+from ut_test.test_tools.test_remove_indentination import Test_remove_indentination
+from ut_test.test_tools.test_align_indentination import Test_align_indentination
 
 if __name__ == '__main__':
     unittest.main()
