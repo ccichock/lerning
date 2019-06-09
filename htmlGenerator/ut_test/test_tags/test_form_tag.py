@@ -1,5 +1,6 @@
 import unittest
 from Html_Tags import form, textarea, label, input_text, div
+from tools.remove_tabs import remove_indentination
 
 
 class Test_form(unittest.TestCase):
@@ -16,8 +17,11 @@ class Test_form(unittest.TestCase):
     def test_form(self):
         self.sut.div().add_class('form-group')
 
-        expect_div = f'<div class="form-group"></div>'
-        self.assertEqual(self.sut.html(), f'<form>\n{expect_div}\n</form>')
+        expect = """<form>
+                    <div class="form-group"></div>
+                    </form>"""
+
+        self.assertEqual(self.sut.html(), remove_indentination(expect))
 
 
     def test_label(self):
@@ -64,17 +68,25 @@ class Test_form(unittest.TestCase):
         self.sut.textarea().add_class('form-control')
         self.sut.textarea().placeholder('Type your message')
 
+
+        expect = """<form>
+                    <textarea class="form-control" placeholder="Type your message"></textarea>
+                    </form>"""
+
         expect_textarea = f'<textarea class="form-control" placeholder="Type your message"></textarea>'
-        self.assertEqual(self.sut.html(), f'<form>\n{expect_textarea}\n</form>')
+        self.assertEqual(self.sut.html(), remove_indentination(expect))
 
 
     def test_form_input_label(self):
         self.sut.label("Label")
         self.sut.input().placeholder("...")
 
-        expect_label = '<label>Label</label>'
-        expect_input = '<input placeholder="...">'
-        self.assertEqual(self.sut.html(), f'<form>\n{expect_label}\n{expect_input}\n</form>')
+        expect = """<form>
+                    <label>Label</label>
+                    <input placeholder="...">
+                    </form>"""
+
+        self.assertEqual(self.sut.html(), remove_indentination(expect))
 
 
     def test_many_forms(self):
@@ -82,5 +94,9 @@ class Test_form(unittest.TestCase):
         div_html.form(id='form1')
         div_html.form(id='form2')
 
-        expect_form = '<form></form>'
-        self.assertEqual(div_html.html(), f'<div>\n{expect_form}\n{expect_form}\n</div>')
+        expect = """<div>
+                    <form></form>
+                    <form></form>
+                    </div>"""
+
+        self.assertEqual(div_html.html(), remove_indentination(expect))

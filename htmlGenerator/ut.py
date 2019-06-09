@@ -18,5 +18,7 @@ from ut_test.test_tags.test_form_tag import Test_form
 
 from ut_test.test_templates.test_registration_form import Test_Registration_Form
 
+from ut_test.test_tools.test_remove_tabs import Test_remove_tabs
+
 if __name__ == '__main__':
     unittest.main()

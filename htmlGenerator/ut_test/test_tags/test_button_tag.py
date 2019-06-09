@@ -1,6 +1,6 @@
 import unittest
 from Html_Tags import button, div
-
+from tools.remove_tabs import remove_indentination
 
 class Test_button(unittest.TestCase):
 
@@ -26,7 +26,9 @@ class Test_button(unittest.TestCase):
         div_html.button('btn1', id='btn1').add_class('btn btn-default')
         div_html.button('btn2', id='btn2').add_class('btn btn-primary')
 
-        button_1 = '<button class="btn btn-default">btn1</button>'
-        button_2 = '<button class="btn btn-primary">btn2</button>'
+        expect = """<div class="container">
+                    <button class="btn btn-default">btn1</button>
+                    <button class="btn btn-primary">btn2</button>
+                    </div>"""
 
-        self.assertEqual(div_html.html(), f'<div class="container">\n{button_1}\n{button_2}\n</div>')
+        self.assertEqual(div_html.html(), remove_indentination(expect))

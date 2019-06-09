@@ -1,6 +1,6 @@
 import unittest
 from Html_Tags import a, div
-
+from tools.remove_tabs import remove_indentination
 
 class Test_a(unittest.TestCase):
 
@@ -30,6 +30,9 @@ class Test_a(unittest.TestCase):
         div_html.a(id="gg" ,text='Link2', url='https://www.google.com/')
         div_html.a(id="yt").add_class("btn btn-light")
 
-        expect_a1 = '<a href="https://www.youtube.com/" class="btn btn-light">Link</a>'
-        expect_a2 = '<a href="https://www.google.com/">Link2</a>'
-        self.assertEqual(div_html.html(), f'<div>\n{expect_a1}\n{expect_a2}\n</div>')
+        expect_html = """<div>
+                         <a href="https://www.youtube.com/" class="btn btn-light">Link</a>
+                         <a href="https://www.google.com/">Link2</a>
+                         </div>"""
+
+        self.assertEqual(div_html.html(), remove_indentination(expect_html))

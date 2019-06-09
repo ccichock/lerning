@@ -10,8 +10,6 @@ class Test_link(unittest.TestCase):
 
 
     def test_bootstrap_link(self):
-        self.maxDiff = None
-
 
         self.sut.bootstrap_link()
 
