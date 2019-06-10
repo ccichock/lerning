@@ -1,65 +1,70 @@
-import re
+import re as regex
 
 
-def is_new_tag(line):
-    return re.match('<(.+)>', line)
+class Formater:
+
+    def __init__(self):
+        self.one_line_tags = ['input', 'link', 'script']
+        self.indent = '    '
+        self.indent_level = 0
 
 
-def align_new_tag(line, indent, indent_level):
-    indent_level += 1
-    for i in range(1, indent_level):
-        line = indent + line
-    return line, indent_level
+    def is_new_tag(self, line):
+        return regex.match('<(.+)>', line)
 
 
-def is_single_line(line):
-    single_line = re.match('<.+>?.+</.+>', line)
-    if single_line:
-        return True
-    else:
-        new_tag = is_new_tag(line)
-        if new_tag and (new_tag.group(1).startswith('input') or new_tag.group(1).startswith('link') or new_tag.group(1).startswith('script')):
-            return True
-    return False
+    def is_close_tag(self, line):
+        return regex.match('</.+>', line)
 
 
-def align_single_line(line, indent, indent_level):
-    indent_level += 1
-    for i in range(1, indent_level):
-        line = indent + line
-    indent_level -= 1
-    return line, indent_level
+    def is_one_line_tag(self, line):
+        new_tag = self.is_new_tag(line)
+        is_one_line_tag = any(new_tag.group(1).startswith(one_line_tag) for one_line_tag in self.one_line_tags)
+        return new_tag and is_one_line_tag
 
 
-def is_close_tag(line):
-    return re.match('</.+>', line)
+    def is_single_line(self, line):
+        single_line = regex.match('<.+>?.+</.+>', line)
+        return single_line or self.is_one_line_tag(line)
 
 
-def align_close_tag(line, indent, indent_level):
-    for i in range(1, indent_level):
-        line = indent + line
-    indent_level -= 1
-    return line, indent_level
+    def add_indent(self, line):
+        for _ in range(1, self.indent_level):
+            line = self.indent + line
+        return line
 
 
-def align(line, indent, indent_level):
-    if is_single_line(line):
-        return align_single_line(line, indent, indent_level)
-    elif is_close_tag(line):
-        return align_close_tag(line, indent, indent_level)
-    elif is_new_tag(line):
-        return align_new_tag(line, indent, indent_level)
-
-    return line, indent_level
+    def add_indent_new_tag(self, line):
+        self.indent_level += 1
+        line = self.add_indent(line)
+        return line
 
 
-def align_indentination(html_string, indent='    '):
-    lines = html_string.splitlines(keepends=True)
+    def add_indent_single_line(self, line):
+        self.indent_level += 1
+        line = self.add_indent(line)
+        self.indent_level -= 1
+        return line
 
-    indent_level = 0
-    indented_lines = []
-    for line in lines:
-        line, indent_level = align(line, indent, indent_level)
-        indented_lines.append(line)
 
-    return ''.join(indented_lines)
+    def add_indent_close_tag(self, line):
+        line = self.add_indent(line)
+        self.indent_level -= 1
+        return line
+
+
+    def add_indents(self, line):
+        if self.is_single_line(line):
+            return self.add_indent_single_line(line)
+        elif self.is_close_tag(line):
+            return self.add_indent_close_tag(line)
+        elif self.is_new_tag(line):
+            return self.add_indent_new_tag(line)
+
+        return line
+
+
+    def format_indents(self, html_string):
+        lines = html_string.splitlines(keepends=True)
+        indented_lines = [self.add_indents(line) for line in lines]
+        return ''.join(indented_lines)

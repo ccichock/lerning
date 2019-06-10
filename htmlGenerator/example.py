@@ -4,7 +4,6 @@ sys.path.append('./src')
 
 from templates.Default_Html import Default_Html
 from templates.Registration_Form import Registration_Form
-from tools.align_indents import align_indentination
 
 
 class Simple_Html(Default_Html):
@@ -27,7 +26,7 @@ def main():
     html = Simple_Html('Page Title')
 
     with open('index.html', 'w') as file:
-        file.write(align_indentination(html.html()))
+        file.write(html.format_html())
 
 
 if __name__ == '__main__':

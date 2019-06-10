@@ -1,5 +1,7 @@
 from Tag_Params_List import Tag_Params_List
 from Children_List import Children_List
+from tools.align_indents import Formater
+
 
 class Html_Tag:
 
@@ -10,6 +12,8 @@ class Html_Tag:
         self.tag_params_list = Tag_Params_List()
         self.text = ''
         self.children = Children_List()
+        self.fromater = Formater()
+
 
     def text_value(self):
 
@@ -29,6 +33,10 @@ class Html_Tag:
         tag_end = f'</{self.tag}>'
 
         return f'{tag_start}{self.text_value()}{tag_end}'
+
+
+    def format_html(self):
+        return self.fromater.format_indents(self.html())
 
 
     def add_child(self, htmlTarget):

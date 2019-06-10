@@ -1,5 +1,5 @@
 import unittest
-from tools.align_indents import align_indentination
+from tools.align_indents import Formater
 import templates.Registration_Form as form_template
 import Html_Tags as tags
 
@@ -43,6 +43,7 @@ class Test_align_indentination(unittest.TestCase):
 
 
     def setUp(self):
+        self.formater = Formater()
         self.sut = tags.html()
 
 
@@ -50,7 +51,8 @@ class Test_align_indentination(unittest.TestCase):
         self.sut.head()
 
         expect_head = '<head></head>'
-        self.assertEqual(align_indentination(self.sut.html()), f'<html>\n    {expect_head}\n</html>')
+        expect_html = f'<html>\n    {expect_head}\n</html>'
+        self.assertEqual(self.formater.format_indents(self.sut.html()), expect_html)
 
 
     def test_align_html_with_children(self):
@@ -58,12 +60,9 @@ class Test_align_indentination(unittest.TestCase):
         self.sut.body().div().add_class("container")
         self.sut.body().div().h1('Header')
 
-        self.assertEqual(align_indentination(self.sut.html()), html_with_children())
+        self.assertEqual(self.formater.format_indents(self.sut.html()), html_with_children())
 
 
     def test_align_registration_form(self):
         form = form_template.Registration_Form()
-
-        self.maxDiff = None
-
-        self.assertEqual(align_indentination(form.html()), registration_form())
+        self.assertEqual(self.formater.format_indents(form.html()), registration_form())
