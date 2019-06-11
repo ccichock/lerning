@@ -15,6 +15,7 @@ from ut_test.test_tags.test_button_tag import Test_button
 from ut_test.test_tags.test_a_tag import Test_a
 from ut_test.test_tags.test_p_tag import Test_p
 from ut_test.test_tags.test_form_tag import Test_form
+from ut_test.test_tags.test_nav_tag import Test_nav
 
 from ut_test.test_templates.test_registration_form import Test_Registration_Form
 

@@ -76,6 +76,10 @@ class Html_Tag:
         return self.children.child("head", id=id)
 
 
+    def nav(self, id=None):
+        return self.children.child("nav", id=id)
+
+
     def h1(self, text="", id=None):
         return self.children.child("h1", text=text, id=id)
 

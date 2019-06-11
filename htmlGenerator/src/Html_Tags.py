@@ -26,6 +26,12 @@ class title(Html_Tag):
         self.text = text
 
 
+class nav(Html_Tag):
+
+    def __init__(self, id=None):
+        super().__init__('nav', id)
+
+
 class div(Html_Tag):
 
     def __init__(self, id=None):

@@ -3,6 +3,7 @@ import sys
 sys.path.append('./src')
 
 from templates.Default_Html import Default_Html
+from templates.Search_Navbar import Search_Navbar_Html
 from templates.Registration_Form import Registration_Form
 
 
@@ -11,8 +12,8 @@ class Simple_Html(Default_Html):
     def __init__(self, page_title):
         super().__init__(page_title)
 
-        self.head().h1('Hello World').add_class('text-light mb-2 p-3 bg-dark text-center')
         self.body().add_class('bg-secondary')
+        self.body().add_child(Search_Navbar_Html())
         self.body().div().add_class('container p-1 bg-light')
         self.body().div().a('youtube' ,'https://www.youtube.com', id="yt").add_class('btn btn-danger')
         self.body().div().a('facebook' ,'https://www.facebook.com', id="fb").add_class('btn btn-primary')
