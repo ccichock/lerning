@@ -54,17 +54,26 @@ class Formater:
 
 
     def add_indents(self, line):
-        if self.is_single_line(line):
-            return self.add_indent_single_line(line)
-        elif self.is_close_tag(line):
-            return self.add_indent_close_tag(line)
-        elif self.is_new_tag(line):
-            return self.add_indent_new_tag(line)
-
-        return line
+        try:
+            if self.is_single_line(line):
+                return self.add_indent_single_line(line)
+            elif self.is_close_tag(line):
+                return self.add_indent_close_tag(line)
+            elif self.is_new_tag(line):
+                return self.add_indent_new_tag(line)
+            else:
+                raise Exception(f'Try to format not html line: {line}')
+        except:
+            raise Exception(f'Failed to format line: {line}')
 
 
     def format_indents(self, html_string):
         lines = html_string.splitlines(keepends=True)
-        indented_lines = [self.add_indents(line) for line in lines]
-        return ''.join(indented_lines)
+
+        try:
+            indented_lines = [self.add_indents(line) for line in lines]
+            return ''.join(indented_lines)
+        except Exception as err:
+            print (err)
+            self.indent_level = 0
+            return html_string
